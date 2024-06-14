@@ -15,31 +15,48 @@ const Carousel = () => {
 
     return (
         <>
-            <div className="carousel-container">
-                <div className="carousel">
-                    {slides.map((slide, index) => (
-                        <div
-                            key={index}
-                            className={`carousel-item 
+
+            <h1>Carosello</h1>
+            <div className="container">
+                <button className="carousel-button" onClick={handlePreviousSlide}>
+                    ←
+                </button>
+                <div className="carousel-container">
+                    <div className="carousel">
+                        {slides.map((slide, index) => (
+                            <div
+                                key={index}
+                                className={`carousel-item 
                                     ${index === activeSlide ? 'active' : ''} 
                                     ${index === activeSlide - 1 || (activeSlide === 0 && index === slides.length - 1) ? 'prev' : ''} 
                                     ${index === activeSlide + 1 || (activeSlide === slides.length - 1 && index === 0) ? 'next' : ''}`
-                            }>                               
-                            <img src={slide.image} alt={slide.title} className="carousel-image" />
-                            <h1 className='slide-title'>{slide.title}</h1> 
-                        </div>
-                    ))}                    
-                </div>                
+                                }>
+                                <img src={slide.image} alt={slide.title} className="carousel-image" />
+                                <h1 className='slide-title'>{slide.title}</h1>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <button className="carousel-button" onClick={handleNextSlide}>
+                    →
+                </button>
             </div>
-            <button className="carousel-button prev" onClick={handlePreviousSlide}>
-                Precedente
-            </button>
-            <button className="carousel-button next" onClick={handleNextSlide}>
-                Successiva
-            </button>
+
+
+            <ul className="bullet-navigation">
+                {slides.map((slide, index) => (
+                    <li
+                        key={index}
+                        className={index === activeSlide ? 'active' : ''}
+                        onClick={() => setActiveSlide(index)}
+                    ></li>
+                ))}
+            </ul>
 
         </>
     );
+
 };
 
 export default Carousel;

@@ -1,3 +1,9 @@
+:root {
+  --image-height:400px;
+  --image-width:600px;
+  --title-height:3rem
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,16 +11,18 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.carousel-image {
+  max-height: var(--image-height);
+  width: var(--image-width);
+  object-fit: scale-down;
 }
 
+
 .carousel-container {
-  width: 600px;
-  height: 450px;
   position: relative; 
+  width: 100%;
+  height: calc(var(--image-height) + var(--title-height));
+  width: var(--image-width);
 }
 
 .carousel-item {
@@ -33,6 +41,50 @@ img {
 .slide-title{
   background-color: gray;
   text-align: center;  
+  height: var(--title-height);
+  line-height: var(--title-height);  
+  margin-top: -4px;
+}
+ 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+.carousel-button {
+  font-size: 2rem;
+  width: 3rem;
+  border-radius: 100%;
+  aspect-ratio: 1;
+  background-color: lightgray;
+  border: none;
+}
+
+.bullet-navigation {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.bullet-navigation li {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: lightgray;
+  cursor: pointer;
+
+}
+
+.bullet-navigation li.active {
+  background-color: grey;
 }
 
 
