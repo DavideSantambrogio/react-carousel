@@ -5,7 +5,7 @@ const Carousel = () => {
     const [activeSlide, setActiveSlide] = useState(0);
     const autoplayDelay = 1500;
 
-    const handleNextSlide = () => {
+    let handleNextSlide = () => {
         setActiveSlide((prevActiveSlide) => (prevActiveSlide + 1) % slides.length);
     };
 
@@ -15,7 +15,7 @@ const Carousel = () => {
 
     useState(() => {
         const interval = setInterval(() => {
-            setActiveSlide((prevActiveSlide) => (prevActiveSlide + 1) % slides.length);
+            handleNextSlide();
         }, autoplayDelay);
 
         return () => clearInterval(interval); 
